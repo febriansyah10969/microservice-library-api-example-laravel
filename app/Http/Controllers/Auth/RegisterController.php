@@ -37,9 +37,8 @@ class RegisterController extends Controller
         } else if (substr(trim($phone), 0, 1) == '0'){
             // cek apakah no hp karakter 1 adalah 0
             $phone = trim($phone);
-        } else {
-            return '';
         }
+        
         return $phone;
     }
 }
