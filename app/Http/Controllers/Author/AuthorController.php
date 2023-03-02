@@ -13,7 +13,7 @@ class AuthorController extends Controller
 {
     public function index()
     {
-        return $this->successResponse(true, 'Berhasil Login.', AuthorResource::collection(\DB::table('authors')->orderBy('id', 'desc')->get()), []);
+        return $this->successResponse(true, 'Berhasil Mendapatkan data.', AuthorResource::collection(\DB::table('authors')->orderBy('id', 'desc')->get()), []);
     }
 
     public function create(CreateAuthorRequest $request)
