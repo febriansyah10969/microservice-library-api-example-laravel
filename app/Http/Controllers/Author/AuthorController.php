@@ -31,7 +31,7 @@ class AuthorController extends Controller
             'name' => $request->name,
         ]);
 
-        return $this->successResponse(true, 'Berhasil menambahkan Author', [], []);
+        return $this->successResponse(true, 'Berhasil merubah Author', [], []);
     }
 
     public function update(UpdateAuthorRequest $request, $uuid)
