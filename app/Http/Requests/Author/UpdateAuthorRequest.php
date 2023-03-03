@@ -24,7 +24,7 @@ class UpdateAuthorRequest extends FormRequest
     public function rules()
     {
         return [
-            'uuid' => 'exists:users,uuid',
+            'uuid' => 'exists:authors,uuid',
             'name' => 'required|min:3',
         ];
     }
