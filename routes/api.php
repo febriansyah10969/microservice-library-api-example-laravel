@@ -13,7 +13,20 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::group(['prefix' => 'v1'], function () {
+    Route::group(['namespace' => 'Auth'], function () {
+        Route::post('register', 'RegisterController@register');
+        Route::post('login', 'LoginController@login')->name('login');;
+    });
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+    Route::get('profile', 'Profile\ProfileController@index')->middleware(['auth:api']);
+
+    Route::group(['prefix' => 'author', 'namespace' => 'Author'], function () {
+        Route::get('', 'AuthorController@index');
+        Route::get('/paginate', 'AuthorController@getListWithPagination');
+        Route::post('', 'AuthorController@create');
+        Route::post('/{uuid}', 'AuthorController@update');
+        Route::delete('/{uuid}', 'AuthorController@delete');
+        Route::post('/delete/multiple', 'AuthorController@deleteMultiple');
+    });
 });
