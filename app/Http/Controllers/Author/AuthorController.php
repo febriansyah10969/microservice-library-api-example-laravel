@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Author;
 
+use App\Http\Resources\ProfileResource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Author\CreateAuthorRequest;
