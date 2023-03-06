@@ -27,5 +27,6 @@ Route::group(['prefix' => 'v1'], function () {
         Route::post('', 'AuthorController@create');
         Route::post('/{uuid}', 'AuthorController@update');
         Route::delete('/{uuid}', 'AuthorController@delete');
+        Route::post('/delete/multiple', 'AuthorController@deleteMultiple');
     });
 });
