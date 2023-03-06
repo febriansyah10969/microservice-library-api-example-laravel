@@ -21,4 +21,9 @@ Route::group(['prefix' => 'v1'], function () {
     });
 
     Route::get('profile', 'Profile\ProfileController@index')->middleware(['auth:api']);
+
+    Route::group(['prefix' => 'author', 'namespace' => 'Author'], function () {
+        Route::post('', 'AuthorController@create')->middleware(['auth:api']);
+    });
+
 });
