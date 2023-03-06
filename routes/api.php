@@ -23,6 +23,7 @@ Route::group(['prefix' => 'v1'], function () {
 
     Route::group(['middleware' => ['auth:api'], 'prefix' => 'author', 'namespace' => 'Author'], function () {
         Route::get('', 'AuthorController@index');
+        Route::get('/paginate', 'AuthorController@getListWithPagination');
         Route::post('', 'AuthorController@create');
     });
 });

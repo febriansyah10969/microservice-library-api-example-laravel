@@ -16,6 +16,13 @@ class AuthorController extends Controller
         return $this->successResponse(true, 'Berhasil Mendapatkan data.', AuthorResource::collection(\DB::table('authors')->orderBy('id', 'desc')->get()), []);
     }
 
+    public function getListWithPagination(Request $request)
+    {
+        $data = \DB::table('authors')->orderBy('id')->cursorPaginate($request->query('perPage'));
+        
+        return $this->paginationResponse(true, 'Berhasil mendapatkan data.', $data, AuthorResource::collection($data->items()), []);
+    }
+
     public function create(CreateAuthorRequest $request)
     {
         \DB::table('authors')->insert([
