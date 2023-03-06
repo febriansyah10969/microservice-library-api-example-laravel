@@ -21,10 +21,11 @@ Route::group(['prefix' => 'v1'], function () {
 
     Route::get('profile', 'Profile\ProfileController@index')->middleware(['auth:api']);
 
-    Route::group(['middleware' => ['auth:api'], 'prefix' => 'author', 'namespace' => 'Author'], function () {
+    Route::group(['prefix' => 'author', 'namespace' => 'Author'], function () {
         Route::get('', 'AuthorController@index');
         Route::get('/paginate', 'AuthorController@getListWithPagination');
         Route::post('', 'AuthorController@create');
         Route::post('/{uuid}', 'AuthorController@update');
+        Route::delete('/{uuid}', 'AuthorController@delete');
     });
 });

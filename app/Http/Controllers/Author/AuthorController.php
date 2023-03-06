@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Author\CreateAuthorRequest;
 use App\Http\Requests\Author\UpdateAuthorRequest;
+use App\Http\Requests\Author\DeleteAuthorRequest;
 use App\User;
 use Illuminate\Support\Str;
 
@@ -41,5 +42,12 @@ class AuthorController extends Controller
         ]);
 
         return $this->successResponse(true, 'Berhasil menambahkan Author', [], []);
+    }
+
+    public function delete(DeleteAuthorRequest $request, $uuid)
+    {
+        \DB::table('authors')->where('uuid', $uuid)->delete();
+
+        return $this->successResponse(true, 'Berhasil menghapus Author', [], []);
     }
 }
