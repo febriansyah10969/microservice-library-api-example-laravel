@@ -25,5 +25,6 @@ Route::group(['prefix' => 'v1'], function () {
         Route::get('', 'AuthorController@index');
         Route::get('/paginate', 'AuthorController@getListWithPagination');
         Route::post('', 'AuthorController@create');
+        Route::post('/{uuid}', 'AuthorController@update');
     });
 });

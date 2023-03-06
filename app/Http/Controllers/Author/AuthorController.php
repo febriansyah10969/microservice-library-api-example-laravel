@@ -6,6 +6,7 @@ use App\Http\Resources\Author\AuthorResource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Author\CreateAuthorRequest;
+use App\Http\Requests\Author\UpdateAuthorRequest;
 use App\User;
 use Illuminate\Support\Str;
 
@@ -27,6 +28,15 @@ class AuthorController extends Controller
     {
         \DB::table('authors')->insert([
             'uuid' => Str::uuid(),
+            'name' => $request->name,
+        ]);
+
+        return $this->successResponse(true, 'Berhasil merubah Author', [], []);
+    }
+
+    public function update(UpdateAuthorRequest $request, $uuid)
+    {
+        \DB::table('authors')->where('uuid', $uuid)->update([
             'name' => $request->name,
         ]);
 
