@@ -25,5 +25,4 @@ Route::group(['prefix' => 'v1'], function () {
     Route::group(['prefix' => 'author', 'namespace' => 'Author'], function () {
         Route::post('', 'AuthorController@create')->middleware(['auth:api']);
     });
-
 });
