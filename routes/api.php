@@ -17,5 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'v1'], function () {
     Route::group(['namespace' => 'Auth'], function () {
         Route::post('register', 'RegisterController@register');
+        Route::post('login', 'LoginController@login');
     });
 });
