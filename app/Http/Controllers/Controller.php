@@ -24,14 +24,30 @@ class Controller extends BaseController
 
     protected function paginationResponse($status, $message, $data, $items, $errors)
     {
+        $prev = $data->previousPageUrl();
+        $next = $data->nextPageUrl();
+        
+        $prevCursor = null;
+        $nextCursor = null;
+
+        if (isset($prev) && !empty($prev)) {
+            parse_str(parse_url($prev, PHP_URL_QUERY), $prevCursor);
+            $prevCursor = $prevCursor['cursor'];
+        }
+
+        if (isset($next) && !empty($next)) {
+            parse_str(parse_url($next, PHP_URL_QUERY), $nextCursor);
+            $nextCursor = $nextCursor['cursor'];
+        }
+
         return response()->json([
             'status' => $status,
             'message' => $message,
             'meta' => [
-                "next_cursor" => $data->nextPageUrl(),
+                "next_cursor" => $nextCursor,
                 "perpage" => (int) $data->perPage(),
-                "prev_cursor" => $data->previousPageUrl(),
-                "has_more_pages" => true
+                "prev_cursor" => $prevCursor,
+                "has_more_pages" => $data->hasMorePages()
             ], 
             'data' => $items,
             'error' => [],
