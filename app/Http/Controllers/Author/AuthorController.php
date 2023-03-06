@@ -19,8 +19,8 @@ class AuthorController extends Controller
 
     public function getListWithPagination(Request $request)
     {
-        $data = \DB::table('authors')->orderBy('id', 'desc')->paginate($request->query('perPage'));
-
+        $data = \DB::table('authors')->orderBy('id')->cursorPaginate($request->query('perPage'));
+        
         return $this->paginationResponse(true, 'Berhasil mendapatkan data.', $data, AuthorResource::collection($data->items()), []);
     }
 
