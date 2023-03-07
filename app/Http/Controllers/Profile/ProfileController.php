@@ -11,6 +11,6 @@ class ProfileController extends Controller
 {
     public function index(Request $request)
     {
-        return $this->successResponse(true, 'Berhasil Login.', new ProfileResource($request->user()), []);
+        return $this->successResponse(true, 'Berhasil Login.', new ProfileResource(\Auth::guard('api')->user()), []);
     }
 }
