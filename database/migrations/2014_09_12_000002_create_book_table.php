@@ -16,11 +16,13 @@ class CreateBookTable extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('uuid');
-            $table->integer('author_id');
+            $table->unsignedBigInteger('author_id');
             $table->string('name');
             $table->integer('price');
             $table->integer('stock');
             $table->timestamps();
+            
+            $table->foreign('author_id')->references('id')->on('authors')->onDelete('cascade');
         });
 
     }
