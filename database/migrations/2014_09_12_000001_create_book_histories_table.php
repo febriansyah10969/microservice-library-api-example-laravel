@@ -21,7 +21,7 @@ class CreateBookHistoriesTable extends Migration
             $table->integer('type');
             $table->timestamps();
 
-            $table->foreign('book_id')->references('id')->on('book_histories')->onDelete('cascade');
+            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
         });
 
     }
