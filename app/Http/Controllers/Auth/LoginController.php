@@ -21,8 +21,7 @@ class LoginController extends Controller
         $check = Hash::check($request->pin, $getUser->pin);
         if ($getUser && $check) {
             JWTAuth::factory()->setTTL(600);
-            $generateToken = Auth::guard('api')->fromUser($getUser, ENV('JWT_SECRET'));  
-
+            $generateToken = Auth::guard('api')->fromUser($getUser, ENV('JWT_SECRET'));
             return $this->successResponse(true, 'Berhasil Login.', [
                 'access_token' => $generateToken,
                 'token_type' => 'bearer',
