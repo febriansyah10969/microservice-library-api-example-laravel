@@ -32,7 +32,7 @@ class CreateAuthorRequest extends FormRequest
     {
         return [
             'name.required' => 'Silakan isi email terlebih dahulu',
-            'name.min' => 'Silakan menggunakan format email yang valid',
+            'name.min' => 'Nama minimal 3 karakter',
         ];
     }
 

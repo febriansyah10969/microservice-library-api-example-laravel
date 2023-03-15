@@ -32,9 +32,9 @@ class UpdateAuthorRequest extends FormRequest
     public function messages()
     {
         return [
-            'uuid.exists' => 'author tidak ditemukan.',
-            'name.required' => 'Silakan isi email terlebih dahulu',
-            'name.min' => 'Silakan menggunakan format email yang valid',
+            'uuid.exists' => 'Author tidak ditemukan.',
+            'name.required' => 'Silakan isi nama terlebih dahulu',
+            'name.min' => 'Nama minimal 3 karakter',
         ];
     }
 }
