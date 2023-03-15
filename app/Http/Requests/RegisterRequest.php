@@ -27,7 +27,7 @@ class RegisterRequest extends FormRequest
         return [
             'name' => 'required|min:3',
             'email' => [ 'required', 'email', 'max:255', 'unique:users,email', new Lowercase ],
-            'category_id' => 'required|integer',
+            'category_id' => 'required|integer|exists:categories,id',
             'phone' => ['required', 'regex:/^08(1[1-9]|2[1-2]|5[2-8]|7[1-9]|8[1-9]|9[1-9])\d{7,9}$/'],
             'date_of_birth' => 'date_format:Y-m-d',
             'pin' => 'required|digits:6|numeric|regex:/^[0-9]+$/',
@@ -43,7 +43,8 @@ class RegisterRequest extends FormRequest
             'email.email' => 'Silakan menggunakan format email yang valid',
             'email.unique' => 'Email sudah digunakan.',
             'category_id.required' => 'Silakan isi kategori id terlebih dahulu',
-            'category.id.integer' => 'Kategori id harus integer',
+            'category_id.integer' => 'Kategori id harus integer',
+            'category_id.exists' => 'Kategori tidak ditemukan',
             'phone.required' => 'Silakan masukan nomor telepon terlebih dahulu',
             'phone.regex' => 'Silahkan masukan nomor telephon 11-13 digit dengan format : 08******',
             'date_of_birth.date_format' => 'Silahkan isi format tanggal lahir seperti ini : 2000-01-14',
