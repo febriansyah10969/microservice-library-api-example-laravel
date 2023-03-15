@@ -24,6 +24,7 @@ class MultipleDeleteAuthorRequest extends FormRequest
     public function rules()
     {
         return [
+            'uuid' => 'required',
             'uuid.*' => 'exists:authors,uuid',
         ];
     }
@@ -31,6 +32,7 @@ class MultipleDeleteAuthorRequest extends FormRequest
     public function messages()
     {
         return [
+            'uuid.required' => 'Silahkan isi uuid terlebih dahulu',
             'uuid.*.exists' => 'Author tidak ditemukan.',
         ];
     }
