@@ -18,4 +18,9 @@ class CategoryController extends Controller
         return $this->successResponse(true, 'Berhasil menampilkan Kategori.', $categories, []);
     }
     
+    public function getListCategories(Request $request)
+    {
+        $categories = Category::orderBy('name', 'asc')->get();
+        return $this->successResponse(true, 'Berhasil menampilkan Kategori.', $categories, []);
+    }
 }
