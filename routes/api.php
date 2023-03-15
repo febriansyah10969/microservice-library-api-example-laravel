@@ -20,6 +20,9 @@ Route::group(['prefix' => 'v1'], function () {
     });
 
     Route::get('profile', 'Profile\ProfileController@index')->middleware(['auth:api']);
+    Route::get('category', 'Category\CategoryController@getCategories');
+    Route::get('category/list', 'Category\CategoryController@getListCategories');
+    
 
     Route::group(['prefix' => 'author', 'namespace' => 'Author'], function () {
         Route::get('', 'AuthorController@index');
